@@ -42,4 +42,6 @@ You can set the SelectedBrush and Alpha/AlphaPercentage properties from the Wind
 ```
 
 ### Nuget Package
+```
 Install-Package CWave -Version 1.0.0
+```
