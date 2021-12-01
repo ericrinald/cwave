@@ -1,9 +1,7 @@
 # cwave
 ColorWave WPF Color Picker UserControl, CWave library v1.0.0.
 
-================================================================================
 CWave Library Documentation: https://colorwavecontrol.square.site/documentation
-================================================================================
 
 Example:
 
