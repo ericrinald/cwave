@@ -1,0 +1,244 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ColorWave_Example"
+        xmlns:CWave="clr-namespace:CWave;assembly=CWave" x:Name="cwaveWindow" x:Class="ColorWave_Example.MainWindow"
+        Title="ColorWave Example" Height="504" Width="764.084" WindowStartupLocation="CenterScreen" TextOptions.TextFormattingMode="Ideal" TextOptions.TextHintingMode="Auto" TextOptions.TextRenderingMode="ClearType" RenderOptions.ClearTypeHint="Enabled" RenderOptions.BitmapScalingMode="HighQuality" Background="#FF3C3C3C" Loaded="Window_Loaded" >
+
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="281*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="277"/>
+                <ColumnDefinition Width="245*"/>
+                <ColumnDefinition Width="248*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="gridControlProperties" Grid.Column="1" Margin="10,10,5,10" Background="#FF5D5D5D">
+                <Grid Margin="10,10,10,0" VerticalAlignment="Top">
+                    <TextBlock Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184" Margin="2,0,0,0" TextWrapping="Wrap"><Run Text="SelectedBrushChanged " FontWeight="Bold" Foreground="White"  /><Run Text="(Event Handler, Properties)" Foreground="#FFA8A8A8"  /></TextBlock>
+                    <TextBox x:Name="textRedValue" HorizontalAlignment="Left" Height="20" Margin="2,37,0,0" VerticalAlignment="Top" Width="31" Background="#FFFF7878" BorderBrush="#FFFF7878" Tag="Red" MouseWheel="AllTextBoxes_MouseWheel" KeyDown="AllTextBoxes_KeyDown" TabIndex="0" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" PreviewTextInput="AllTextBoxes_PreviewTextInput" MaxLength="3"/>
+                    <TextBox x:Name="textGreenValue" HorizontalAlignment="Left" Height="20" Margin="38,37,0,0" VerticalAlignment="Top" Width="31" Background="#FFB4FFA8" BorderBrush="#FFB4FFA8" Tag="Green" MouseWheel="AllTextBoxes_MouseWheel" KeyDown="AllTextBoxes_KeyDown" TabIndex="1" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" MaxLength="3" PreviewTextInput="AllTextBoxes_PreviewTextInput"/>
+                    <TextBox x:Name="textBlueValue" HorizontalAlignment="Left" Height="20" Margin="74,37,0,0" VerticalAlignment="Top" Width="31" Background="#FF8ADAFF" BorderBrush="#FF8ADAFF" Tag="Blue" MouseWheel="AllTextBoxes_MouseWheel" KeyDown="AllTextBoxes_KeyDown" TabIndex="2" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" MaxLength="3" PreviewTextInput="AllTextBoxes_PreviewTextInput"/>
+                    <TextBox x:Name="textAlphaValue" Height="20" Margin="38,62,0,0" VerticalAlignment="Top" Width="31" HorizontalAlignment="Left" Tag="Alpha" MouseWheel="AllTextBoxes_MouseWheel" KeyDown="AllTextBoxes_KeyDown" TabIndex="4" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" MaxLength="3" PreviewTextInput="AllTextBoxes_PreviewTextInput"/>
+                    <TextBox x:Name="textHexValue" CharacterCasing="Upper" Height="20" Margin="110,37,0,0" Text="#" VerticalAlignment="Top" KeyDown="AllTextBoxes_KeyDown" Tag="HexValue" TabIndex="3" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" MaxLength="9"/>
+                    <TextBox x:Name="textAlphaPercentage" Height="20" Margin="171,62,0,0" VerticalAlignment="Top" MouseWheel="AllTextBoxes_MouseWheel" Tag="AlphaPercentage" KeyDown="AllTextBoxes_KeyDown" TabIndex="5" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" PreviewTextInput="AllTextBoxes_PreviewTextInput" MaxLength="4"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,66,0,0" TextWrapping="Wrap" Text="Alpha:" VerticalAlignment="Top" Foreground="White"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="74,66,0,0" TextWrapping="Wrap" Text="AlphaPercentage:" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="2.515,0.75"/>
+                </Grid>
+                <Grid Margin="10,164,10,0" VerticalAlignment="Top">
+                    <TextBlock Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"><Run Text="FieldsShown " FontWeight="Bold" Foreground="White"  /><Run Text="(Property)" Foreground="#FFA8A8A8"  /></TextBlock>
+                    <ComboBox x:Name="comboFieldsShown" Margin="0,19,0,0" VerticalAlignment="Top" SelectionChanged="comboFieldsShown_SelectionChanged" Height="20" TabIndex="9"/>
+                    <TextBlock Margin="0,99,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"><Run Text="SelectedBrushPanel " FontWeight="Bold" Foreground="White"  /><Run Text="(Property)" Foreground="#FFA8A8A8"  /></TextBlock>
+                    <ComboBox x:Name="comboSelectedBrushPanel" Margin="0,118,0,0" VerticalAlignment="Top" SelectionChanged="comboDisplaySelectedBrush_SelectionChanged" Height="20" TabIndex="11"/>
+                    <TextBlock Margin="0,49,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"><Run Text="InputPanel " FontWeight="Bold" Foreground="White"  /><Run Text="(Property)" Foreground="#FFA8A8A8"  /></TextBlock>
+                    <ComboBox x:Name="comboInputPanel" Margin="0,68,0,0" VerticalAlignment="Top" SelectionChanged="comboRgbHsbPanel_SelectionChanged" Height="20" TabIndex="10"/>
+                </Grid>
+                <Grid Margin="10,319,10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="92"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock TextWrapping="Wrap"><Run Text="SelectedBrush " FontWeight="Bold" Foreground="White"  /><Run Foreground="#FFA8A8A8" Text="(Property)"/></TextBlock>
+                    <Canvas x:Name="canvasSelectedBrush" Background="Black" Grid.Column="1"/>
+                </Grid>
+                <Grid Margin="10,108,10,0" VerticalAlignment="Top" Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="74*"/>
+                        <ColumnDefinition Width="73*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock TextWrapping="Wrap" Text="Hue:" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="31"/>
+                    <TextBlock Margin="2,0,0,0" TextWrapping="Wrap" Text="Saturation:" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Grid.Column="1"/>
+                    <TextBlock TextWrapping="Wrap" Text="Brightness:" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="58" Grid.Column="2" Margin="2,0,0,0"/>
+                    <TextBox x:Name="textHue" Height="20" Margin="0,0,2,0" VerticalAlignment="Bottom" Tag="Hue" MouseWheel="AllTextBoxes_MouseWheel" KeyDown="AllTextBoxes_KeyDown" TabIndex="6" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" PreviewTextInput="AllTextBoxes_PreviewTextInput"/>
+                    <TextBox x:Name="textSaturation" Margin="2,0" Height="20" VerticalAlignment="Bottom" Tag="Saturation" MouseWheel="AllTextBoxes_MouseWheel" KeyDown="AllTextBoxes_KeyDown" Grid.Column="1" TabIndex="7" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" PreviewTextInput="AllTextBoxes_PreviewTextInput"/>
+                    <TextBox x:Name="textBrightness" Height="20" Margin="2,0,0,0" VerticalAlignment="Bottom" Tag="Brightness" MouseWheel="AllTextBoxes_MouseWheel" KeyDown="AllTextBoxes_KeyDown" Grid.Column="2" TabIndex="8" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" PreviewTextInput="AllTextBoxes_PreviewTextInput"/>
+                </Grid>
+            </Grid>
+            <GridSplitter HorizontalAlignment="Left" Width="3" Background="#FF5D5D5D" Grid.Column="1"/>
+            <Grid Margin="0" Background="#FF2E2E2E">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="181"/>
+                    <RowDefinition Height="269*"/>
+                </Grid.RowDefinitions>
+
+                <CWave:ColorWave x:Name="colorWave" Width="Auto" SelectedBrushChanged="ColorWave_SelectedBrushChanged"
+                                 ColorCaptureChanged="ColorWave_ColorCaptureChanged" Foreground="#FFB6AFAF"
+                                 Height="Auto" MinHeight="0" Margin="10,10,10,5" MinWidth="0" Background="#FF1B1B1B" BorderBrush="#FF515151" InputFieldBorderBrush="#FF787878" InputFieldBorderMouseOverBrush="#FFB9B9B9" MenuDropDownBackground="#7F1B1B1B"
+                                 SelectedBrush="{Binding Path=Items[0].SampleBrush, ElementName=lvBrushes, Mode=OneWayToSource}" ColorCaptureArea="Screen">
+                    <CWave:ColorWave.EyeDropperButtonGlyph>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF919191" Offset="1"/>
+                            <GradientStop Color="White"/>
+                        </LinearGradientBrush>
+                    </CWave:ColorWave.EyeDropperButtonGlyph>
+                    <CWave:ColorWave.EyeDropperButtonBackground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF3C3C3C" Offset="1"/>
+                            <GradientStop Color="#FF616161"/>
+                        </LinearGradientBrush>
+                    </CWave:ColorWave.EyeDropperButtonBackground>
+                    <CWave:ColorWave.EyeDropperButtonMouseOver>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF7B8F9E"/>
+                            <GradientStop Color="#FF00579C" Offset="1"/>
+                        </LinearGradientBrush>
+                    </CWave:ColorWave.EyeDropperButtonMouseOver>
+                    <CWave:ColorWave.InputFieldBackground>
+                        <SolidColorBrush Color="#FF333333"/>
+                    </CWave:ColorWave.InputFieldBackground>
+                </CWave:ColorWave>
+                <Grid Margin="10" Grid.Row="1">
+                    <ListView x:Name="lvBrushes" Background="#FF3E3E3E" Foreground="White" SelectionMode="Single" SelectionChanged="lvBrushes_SelectionChanged" Margin="0,0,0,40">
+                        <ListView.Style>
+                            <Style TargetType="ListView">
+                                <Setter Property="SelectedIndex" Value="0" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsSelectingBrush, ElementName=colorWave, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                        <Setter Property="SelectedIndex" Value="0"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding BrushChanged, ElementName=cwaveWindow, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                        <Setter Property="SelectedIndex" Value="0"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.Style>
+                        <ListView.View>
+                            <GridView ColumnHeaderContainerStyle="{StaticResource ListViewStyle}">
+                                <GridViewColumn Header="Brush" Width="75">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Rectangle x:Name="recColorColumn" Fill="{Binding SampleBrush, Mode=OneWay}" Width="40" Height="20"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="140"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid VerticalAlignment="Bottom" Height="32" HorizontalAlignment="Center" Margin="0" Width="257">
+                        <Button x:Name="buttonProperties" Content="Properties" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Height="29" Foreground="White" Click="buttonProperties_Click">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="{StaticResource DefaultButtonBackground}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=ShowingNonBindingProps, ElementName=cwaveWindow}" Value="True">
+                                            <Setter Property="Button.Background" Value="{StaticResource SelectedButtonBackground}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=ShowingNonBindingProps, ElementName=cwaveWindow}" Value="False">
+                                            <Setter Property="Button.Background" Value="{StaticResource DefaultButtonBackground}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button x:Name="buttonPropertyBindings" Content="Bindings" Margin="70,0,0,0" VerticalAlignment="Top" Height="29" Foreground="White" Click="buttonPropertyBindings_Click" HorizontalAlignment="Left" Width="65">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="{StaticResource DefaultButtonBackground}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=ShowingNonBindingProps, Mode=OneWay, ElementName=cwaveWindow}" Value="False">
+                                            <Setter Property="Button.Background" Value="{StaticResource SelectedButtonBackground}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=ShowingNonBindingProps, Mode=OneWay, ElementName=cwaveWindow}" Value="True">
+                                            <Setter Property="Button.Background" Value="{StaticResource DefaultButtonBackground}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button x:Name="buttonColorCapture" Margin="140,0,0,0" VerticalAlignment="Top" Height="29" Click="buttonColorCapture_Click" HorizontalAlignment="Left" Width="117">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="{StaticResource DefaultButtonBackground}" />
+                                    <Setter Property="Content" Value="BeginColorCapture()"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="FontWeight" Value="Regular"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsColorCaptureActive, Mode=OneWay, ElementName=colorWave}" Value="True">
+                                            <Setter Property="Content" Value="Capture Active"/>
+                                            <Setter Property="Background" Value="{StaticResource CaptureActiveButtonBackground}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource CaptureActiveButtonForeground}"/>
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=IsColorCaptureActive, Mode=OneWay, ElementName=colorWave}" Value="False">
+                                            <Setter Property="Content" Value="BeginColorCapture()"/>
+                                            <Setter Property="Background" Value="{StaticResource DefaultButtonBackground}"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="FontWeight" Value="Regular"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                </Grid>
+                <GridSplitter HorizontalAlignment="Stretch" Height="3" Grid.Row="1" VerticalAlignment="Top" ResizeDirection="Rows" Background="#FF404040" Margin="2,0"/>
+            </Grid>
+            <Grid x:Name="gridControlPropertyBindings" Grid.Column="2" Margin="5,10,10,10" Background="#FF5D5D5D">
+                <Grid Margin="10,10,10,0" VerticalAlignment="Top">
+                    <TextBlock x:Name="___No_Name_" Height="36" VerticalAlignment="Top" TextWrapping="Wrap" HorizontalAlignment="Left" Width="213"><Run Text="Red, Green, Blue, Alpha, HexValue " FontWeight="Bold" Foreground="White"  /><Run Text="(Properties, Binding)" Foreground="#FFA8A8A8"  /></TextBlock>
+                    <TextBox x:Name="textRedValueBinding" Height="20" Margin="0,37,0,0" Text="{Binding Red, ElementName=colorWave, Mode=TwoWay}" VerticalAlignment="Top" Background="#FFFF7878" HorizontalAlignment="Left" Width="31" PreviewTextInput="AllTextBoxes_PreviewTextInput" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" BorderBrush="#FFFF7878" MouseWheel="AllTextBoxes_MouseWheel" Tag="Red" KeyDown="AllTextBoxes_KeyDown" TabIndex="12" MaxLength="3" />
+                    <TextBox x:Name="textGreenValueBinding" HorizontalAlignment="Left" Height="20" Margin="36,37,0,0" Text="{Binding Green, ElementName=colorWave, Mode=TwoWay}" VerticalAlignment="Top" Width="31" Background="#FFB4FFA8" PreviewTextInput="AllTextBoxes_PreviewTextInput" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" BorderBrush="#FFB4FFA8" MouseWheel="AllTextBoxes_MouseWheel" Tag="Green" KeyDown="AllTextBoxes_KeyDown" TabIndex="13" MaxLength="3"/>
+                    <TextBox x:Name="textBlueValueBinding" HorizontalAlignment="Left" Height="20" Margin="72,37,0,0" Text="{Binding Blue, ElementName=colorWave, Mode=TwoWay}" VerticalAlignment="Top" Width="31" Background="#FF8ADAFF" PreviewTextInput="AllTextBoxes_PreviewTextInput" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" BorderBrush="#FF8ADAFF" MouseWheel="AllTextBoxes_MouseWheel" Tag="Blue" KeyDown="AllTextBoxes_KeyDown" TabIndex="14" MaxLength="3"/>
+                    <TextBox x:Name="textAlphaValueBinding" Height="20" Margin="36,62,0,0" VerticalAlignment="Top" Text="{Binding Alpha, ElementName=colorWave, Mode=TwoWay}" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" RenderTransformOrigin="0.583,-0.25" Width="31" HorizontalAlignment="Left" MouseWheel="AllTextBoxes_MouseWheel" Tag="Alpha" PreviewTextInput="AllTextBoxes_PreviewTextInput" KeyDown="AllTextBoxes_KeyDown" TabIndex="16" MaxLength="3"/>
+                    <TextBox x:Name="textAlphaPercentageBinding" Height="20" Margin="169,62,0,0" Text="{Binding AlphaPercentage, ElementName=colorWave, Mode=TwoWay, StringFormat=\{0:0.#\}, UpdateSourceTrigger=Explicit}" VerticalAlignment="Top" MouseWheel="AllTextBoxes_MouseWheel" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" Tag="AlphaPercentage" PreviewTextInput="AllTextBoxes_PreviewTextInput" KeyDown="AllTextBoxes_KeyDown" TabIndex="17" MaxLength="4"/>
+                    <TextBox x:Name="textHexValueBinding" CharacterCasing="Upper" Height="20" Margin="108,37,0,0" Text="{Binding HexValue, ElementName=colorWave, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Tag="HexValue" TabIndex="15" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" KeyDown="AllTextBoxes_KeyDown" MaxLength="9"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,66,0,0" TextWrapping="Wrap" Text="Alpha:" VerticalAlignment="Top" Foreground="White"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="72,66,0,0" TextWrapping="Wrap" Text="AlphaPercentage:" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="2.515,0.75"/>
+
+
+                </Grid>
+                <Grid Margin="9,164,9,0" VerticalAlignment="Top">
+                    <TextBlock Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="213"><Run Text="FieldsShown " FontWeight="Bold" Foreground="White"  /><Run Text="(Property, Binding)" Foreground="#FFA8A8A8"  /></TextBlock>
+                    <ComboBox x:Name="comboFieldsShownBinding" Margin="0,19,0,0" VerticalAlignment="Top" SelectedValue="{Binding FieldsShown, ElementName=colorWave}" Height="20" TabIndex="21"/>
+                    <TextBlock Margin="0,49,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="213"><Run Text="InputPanel " FontWeight="Bold" Foreground="White"  /><Run Text="(Property, Binding)" Foreground="#FFA8A8A8"  /></TextBlock>
+                    <ComboBox x:Name="comboInputPanelBinding" Margin="0,68,0,0" VerticalAlignment="Top" SelectedValue="{Binding InputPanel, ElementName=colorWave}" Height="20" TabIndex="22" />
+                    <TextBlock Margin="0,99,0,0" Height="19" VerticalAlignment="Top" TextWrapping="Wrap" HorizontalAlignment="Left" Width="213"><Run Text="SelectedBrushPanel " FontWeight="Bold" Foreground="White"  /><Run Text="(Property, Binding)" Foreground="#FFA8A8A8"  /></TextBlock>
+                    <ComboBox x:Name="comboSelectedBrushPanelBinding" Margin="0,118,0,0" VerticalAlignment="Top" SelectedValue="{Binding SelectedBrushPanel, ElementName=colorWave}" Height="20" TabIndex="23"/>
+                </Grid>
+                <Grid Margin="10,319,10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="92"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock TextWrapping="Wrap"><Run Text="SelectedBrush " FontWeight="Bold" Foreground="White"  /><Run Text="(Property, Binding)" Foreground="#FFA8A8A8"  /></TextBlock>
+                    <Canvas x:Name="canvasSelectedBrushBinding" Background="{Binding SelectedBrush, ElementName=colorWave}" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Margin="0">
+                        <Canvas.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Canvas.RenderTransform>
+                    </Canvas>
+                </Grid>
+                <Grid Margin="10,108,10,0" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="74*"/>
+                        <ColumnDefinition Width="73*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="textHueBinding" Margin="0,0,2,1" Text="{Binding Hue, ElementName=colorWave, Mode=TwoWay, StringFormat=F3}" RenderTransformOrigin="0.972,0.565" PreviewTextInput="AllTextBoxes_PreviewTextInput" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" Tag="Hue" MouseWheel="AllTextBoxes_MouseWheel" VerticalAlignment="Bottom" Height="20" KeyDown="AllTextBoxes_KeyDown" TabIndex="18"/>
+                    <TextBlock TextWrapping="Wrap" Text="Hue:" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="31" Height="16" Margin="2,0,0,0"/>
+                    <TextBlock Margin="2,0,0,0" TextWrapping="Wrap" Text="Saturation:" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="58" Height="18" Grid.Column="1"/>
+                    <TextBox x:Name="textSaturationBinding" Margin="2,0,2,1" Text="{Binding Saturation, ElementName=colorWave, Mode=TwoWay, StringFormat=F2, UpdateSourceTrigger=Explicit}" Tag="Saturation" MouseWheel="AllTextBoxes_MouseWheel" Grid.Column="1" VerticalAlignment="Bottom" Height="20" KeyDown="AllTextBoxes_KeyDown" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" TabIndex="19" PreviewTextInput="AllTextBoxes_PreviewTextInput"/>
+                    <TextBlock Margin="2,0,0,26" TextWrapping="Wrap" Text="Brightness:" Foreground="White" HorizontalAlignment="Left" Width="62" Grid.Column="2"/>
+                    <TextBox x:Name="textBrightnessBinding" Margin="2,0,2,1" Text="{Binding Brightness, ElementName=colorWave, Mode=TwoWay, StringFormat=F2, UpdateSourceTrigger=PropertyChanged}" Tag="Brightness" MouseWheel="AllTextBoxes_MouseWheel" Grid.Column="2" VerticalAlignment="Bottom" Height="20" KeyDown="AllTextBoxes_KeyDown" LostFocus="AllTextBoxes_LostFocus" LostKeyboardFocus="AllTextBoxes_LostKeyboardFocus" TabIndex="20" PreviewTextInput="AllTextBoxes_PreviewTextInput"/>
+
+
+                </Grid>
+
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
