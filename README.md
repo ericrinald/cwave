@@ -1,8 +1,8 @@
-# cwave
+# CWave
 ColorWave WPF Color Picker UserControl, CWave library v1.0.0.
 
-CWave Library Documentation:
-https://colorwavecontrol.square.site/documentation
+## Description and Documentation:
+The ColorWave WPF Color Picker is a .NET FrameWork(v4.8) UserControl, part of the CWave library. Documentation can be found at: https://colorwavecontrol.square.site/documentation
 
 Example:
 
