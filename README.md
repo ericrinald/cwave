@@ -6,7 +6,8 @@ https://colorwavecontrol.square.site/documentation
 
 Example:
 
-`<Window x:Class="CWaveWPF.MainWindow"
+```
+<Window x:Class="CWaveWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
