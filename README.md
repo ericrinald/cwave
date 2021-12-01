@@ -14,9 +14,7 @@ Example:
         xmlns:CWave="clr-namespace:CWave;assembly=CWave"
         mc:Ignorable="d"
         Title="MainWindow" Height="364.916" Width="471.954">
-  
     <Grid>
         <CWave:ColorWave SelectedBrush="DodgerBlue"/>
     </Grid>
-  
 </Window>
