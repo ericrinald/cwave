@@ -25,7 +25,7 @@ Set SelectedBrush to the desired brush to load with or leave the property unset 
 ```
 
 #### Example C#:
-You can set the SelectedBrush and Alpha/AlphaPercentage properties from the Window's constructor or Loaded event. All other color-influencing properties can be set after the control has been rendered. When creating a new instance of the control or loading the parent window of the control, the control's SelectedBrushChanged will be raised once after the control's Loaded event has been raised. After the control has been rendered, SelectedBrushChanged will be raised each time any color-influencing property changes. 
+You can set the SelectedBrush and Alpha/AlphaPercentage properties from the Window's constructor or Loaded event. All other color-influencing properties can be set after the control has been rendered. When creating a new instance of the control or loading the parent window of the control, the control's SelectedBrushChanged event will be raised once after the control's Loaded event has been raised. After the control has been rendered, SelectedBrushChanged will be raised each time any color-influencing property changes. 
 
 ```
         public MainWindow()
