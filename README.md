@@ -2,7 +2,7 @@
 ColorWave WPF Color Picker UserControl, CWave library v1.0.0.
 
 ## Description and Documentation:
-The ColorWave WPF Color Picker is a .NET FrameWork(v4.8) UserControl, part of the CWave library. This repo includes an example solution with the ColorWave WPF Color Picker in demo-mode. Documentation can be found at: https://colorwavecontrol.square.site/documentation
+The ColorWave WPF Color Picker is a .NET FrameWork(v4.8) UserControl, part of the CWave library. This repo includes an example solution with the ColorWave WPF Color Picker in demo-mode. Documentation can be found at: https://www.cwavelib.net/documentation
 
 #### Example XAML:
 Set SelectedBrush to the desired brush to load with or leave the property unset to load with the default Brushes.Black. SelectedBrush and Alpha/AlphaPercentage properties may be set in the xaml editor at design-time. Other color-influencing properties will not load in run-time if they were set at design-time in the xaml editor.
